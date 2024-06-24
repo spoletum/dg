@@ -1,4 +1,4 @@
-.PHONY: clean all
+.PHONY: clean e2e
 
 BIN_DIR := bin
 BIN_FILE := $(BIN_DIR)/dg
@@ -16,3 +16,6 @@ $(BIN_DIR):
 
 clean:
 	rm -Rf $(BIN_DIR)
+
+e2e:
+	go test -v github.com/spoletum/dg/e2e/...  
