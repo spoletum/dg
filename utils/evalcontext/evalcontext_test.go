@@ -50,3 +50,19 @@ func TestFromEnvironment(t *testing.T) {
 		assert.Nil(t, result)
 	})
 }
+
+func TestDefault(t *testing.T) {
+	// Existing test case
+	t.Run("Default evaluation context", func(t *testing.T) {
+		result := Default()
+		assert.NotNil(t, result)
+		assert.Len(t, result.Variables, 0)
+		assert.Len(t, result.Functions, 6)
+		assert.Contains(t, result.Functions, "upper")
+		assert.Contains(t, result.Functions, "lower")
+		assert.Contains(t, result.Functions, "min")
+		assert.Contains(t, result.Functions, "max")
+		assert.Contains(t, result.Functions, "strlen")
+		assert.Contains(t, result.Functions, "substr")
+	})
+}

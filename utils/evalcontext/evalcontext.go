@@ -5,8 +5,30 @@ import (
 	"log/slog"
 	"strings"
 
+	"github.com/hashicorp/hcl/v2"
 	"github.com/zclconf/go-cty/cty"
+	"github.com/zclconf/go-cty/cty/function"
+	"github.com/zclconf/go-cty/cty/function/stdlib"
 )
+
+func Default() *hcl.EvalContext {
+	slog.Debug("Start evalcontext.New()")
+	// Create an evaluation context with the standard functions
+	result := &hcl.EvalContext{
+		Functions: map[string]function.Function{
+			"upper":  stdlib.UpperFunc,
+			"lower":  stdlib.LowerFunc,
+			"min":    stdlib.MinFunc,
+			"max":    stdlib.MaxFunc,
+			"strlen": stdlib.StrlenFunc,
+			"substr": stdlib.SubstrFunc,
+		},
+		Variables: map[string]cty.Value{},
+	}
+	slog.Debug("End evalcontext.New()")
+	return result
+
+}
 
 // fromEnvironment returns a map of cty.Value from the environment. For testability purposes, the environment is passed as an array of strings to mimic the os.Environ() function.
 func FromEnvironment(source []string) (map[string]cty.Value, error) {
