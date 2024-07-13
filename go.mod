@@ -4,6 +4,7 @@ go 1.22.4
 
 require (
 	github.com/hashicorp/hcl/v2 v2.21.0
+	github.com/lib/pq v1.10.9
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
 	github.com/testcontainers/testcontainers-go v0.31.0
