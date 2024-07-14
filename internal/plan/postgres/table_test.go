@@ -36,7 +36,7 @@ func TestPostgresTableBlock_Snapshot(t *testing.T) {
 		// Create a new table block
 		block := &PostgresTableBlock{
 			Name:  "test_table",
-			Query: testutils.MustGetHclExpression("SELECT * FROM TRANSACTIONS"),
+			Query: testutils.MustGetHclExpression("SELECT ID, NAME, SURNAME, MIDDLE_NAME, BIRTH_DATE, DELETED FROM CLIENTS"),
 		}
 
 		// Execute the snapshot
