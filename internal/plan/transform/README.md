@@ -2,9 +2,9 @@
 A transform directive instructs doppelganger to alter the value of this column as per the expression provided.
 An example coud be:
 ```hcl
-	postgres "production" {
+    postgres "production" {
         url = "postgres://user:${password}@localhost:5432/db"
-	    table "users" {
+        table "users" {
             query = "SELECT id, name, surname FROM users"
             transform "name" "scramble()"
             transform "surname" "this is a constant value"
